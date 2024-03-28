@@ -1,0 +1,98 @@
+version: '3.8'
+
+## NGinx Proxy Manager
+services:
+#  npm:
+#    image: jc21/nginx-proxy-manager:latest
+#    hostname: npm
+#    container_name: npm
+#    restart: unless-stopped
+#    ports:
+#      - 443:443
+#      - 81:81
+#    volumes:
+#      - ./npm/data:/data
+#      - ./npm/letsencrypt:/etc/letsencrypt
+#      - ./npm/certs:/etc/certs
+#    networks:
+#      - npm
+#      - nextcloud-aio
+#      - torrent
+
+## NextCloud AIO
+#  nextcloud-aio-mastercontainer:
+#    image: nextcloud/all-in-one:latest
+#    init: true
+#    restart: always
+#    container_name: nextcloud-aio-mastercontainer # This line is not allowed to be changed as otherwise AIO will not work correctly
+#    ports:
+#      - 8080:8080
+#    volumes:
+#      - nextcloud_aio_mastercontainer:/mnt/docker-aio-config # This line is not allowed to be changed as otherwise the built-in backup solution will not work
+#      - /var/run/docker.sock:/var/run/docker.sock:ro # May be changed on macOS, Windows or docker rootless. See the applicable documentation. If adjusting, don't forget to also set 'WATCHTOWER_DOCKER_SOCKET_PATH'!
+#    environment: # Is needed when using any of the options below
+#      - APACHE_PORT=11000 # Is needed when running behind a web server or reverse proxy (like Apache, Nginx, Cloudflare Tunnel and else). See https://github.com/nextcloud/all-in-one/blob/main/reverse-proxy.md
+#      - APACHE_IP_BINDING=127.0.0.1 # Should be set when running behind a web server or reverse proxy (like Apache, Nginx, Cloudflare Tunnel and else) that is running on the same host. See https://github.com/nextcloud/all-in-one/blob/main/reve>
+#      # - BORG_RETENTION_POLICY=--keep-within=7d --keep-weekly=4 --keep-monthly=6 # Allows to adjust borgs retention policy. See https://github.com/nextcloud/all-in-one#how-to-adjust-borgs-retention-policy
+#      - NEXTCLOUD_DATADIR=/mnt/ncdata/data # Allows to set the host directory for Nextcloud's datadir. ⚠️⚠️⚠️ Warning: do not set or adjust this value after the initial Nextcloud installation is done! See https://github.com/nextcloud/all-in-one#h>
+#      - NEXTCLOUD_STARTUP_APPS=twofactor_totp gestion drawio epubviewer files_mindmap news tables timetracker # Allows to modify the Nextcloud apps that are installed on starting AIO the first time. See https://github.com/nextcloud/all-in-one#>
+#      # - NEXTCLOUD_ADDITIONAL_APKS=imagemagick # This allows to add additional packages to the Nextcloud container permanently. Default is imagemagick but can be overwritten by modifying this value. See https://github.com/nextcloud/all-in-one>
+#      - SKIP_DOMAIN_VALIDATION=true
+#    networks:
+#      - nextcloud-aio
+
+## Tailscale
+#  tailscale:
+#    container_name: tailscale
+#    hostname: tailscale-nas
+#    image: tailscale/tailscale:stable
+#    volumes:
+#      - ./tailscale/tailscale:/var/lib # State data will be stored in this directory
+#      - /dev/net/tun:/dev/net/tun # Required for tailscale to work
+#    cap_add: # Required for tailscale to work
+#      - net_admin
+#      - sys_module
+#    command: tailscaled
+#    privileged: true
+#    environment:
+#      TS_AUTHKEY: tskey-auth-kPfCb56CNTRL-vFpu99GTzY5orfkRuA6KY5AvxFbNDP5L
+#      TS_HOSTNAME: ContaboVPS
+#      TS_EXTRA_ARGS: --advertise-exit-node --advertise-routes=172.20.0.0/16,172.25.0.0/16 --accept-routes
+#    restart: unless-stopped
+#    networks:
+#      - npm
+#      - nextcloud-aio
+
+## boinc
+#
+#  boinc:
+#    image: lscr.io/linuxserver/boinc:latest
+#    container_name: boinc
+#    security_opt:
+#      - seccomp:unconfined #optional
+#    environment:
+#      - PUID=1000
+#      - PGID=1000
+#      - TZ=Etc/UTC
+#      - CUSTOM_USER=fox
+#      - PASSWORD=MojeTajneHaslo! #optional
+#      - TITLE="BOINC console"
+#      - LC_ALL=pl_PL.UTF-8
+#    volumes:
+#      - ./boinc/data:/config
+#    ports:
+#      - 8080:8080
+#      - 8181:8181
+#    devices:
+#      - /dev/dri:/dev/dri #optional
+#    restart: unless-stopped
+#    networks:
+#      - npm
+
+#  nextcloud_aio_mastercontainer:
+#    name: nextcloud_aio_mastercontainer
+#  nextcloud-aio:
+#    name: nextcloud-aio
+#    driver: bridge
+#  torrent:
+#    name: torrent_network

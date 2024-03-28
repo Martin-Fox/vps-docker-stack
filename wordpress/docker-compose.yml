@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  mysql-ml:
+    image: mysql:8.0
+    hostname: mysql-ml
+    container_name: mysql-ml
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-ml:/var/lib/mysql
+    networks:
+      - wp
+
+  mysql-fa:
+    image: mysql:8.0
+    hostname: mysql-fa
+    container_name: mysql-fa
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql-fa:/var/lib/mysql
+    networks:
+      - wp
+
+  wordpress-ml:
+    image: wordpress:latest
+    hostname: wordpress-ml
+    container_name: wordpress-ml
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: mysql-ml
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    volumes:
+      - wp-ml:/var/www/html
+    networks:
+      - npm
+      - wp
+    depends_on:
+      - mysql-ml
+
+  wordpress-fa:
+    image: wordpress:latest
+    hostname: wordpress-fa
+    container_name: wordpress-fa
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: mysql-fa
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    volumes:
+      - wp-fa:/var/www/html
+    networks:
+      - npm
+      - wp
+    depends_on:
+      - mysql-fa
+
+volumes:
+  mysql-ml:
+    name: mysql-ml
+  mysql-fa:
+    name: mysql-fa
+  wp-ml:
+    name: wp-ml
+  wp-fa:
+    name: wp-fa
+
+networks:
+  npm:
+    name: npm_network
+  wp:
+    name: wp_network

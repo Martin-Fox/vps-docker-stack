@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  app:
+    image: jc21/nginx-proxy-manager:latest
+    hostname: npm
+    container_name: npm
+    restart: unless-stopped
+    ports:
+      - 443:443
+#      - 81:81
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+      - ./certs:/etc/certs
+    networks:
+      - npm
+      - nextcloud-aio
+      - torrent
+
+networks:
+  npm:
+    name: npm_network
+  nextcloud-aio:
+    name: nextcloud-aio # This line is not allowed to be changed as otherwise the created network will not be used by the other containers of AIO
+    driver: bridge
+  torrent:
+    name: torrent_network

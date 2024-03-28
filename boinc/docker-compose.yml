@@ -1,0 +1,31 @@
+services:
+  boinc:
+    image: lscr.io/linuxserver/boinc:latest
+    container_name: boinc
+    security_opt:
+      - seccomp:unconfined #optional
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+#      - CUSTOM_USER=fox
+#      - PASSWORD=MojeTajneHaslo! #optional
+#      - TITLE="BOINC console"
+      - CUSTOM_USER
+      - PASSWORD
+      - TITLE
+      - LC_ALL=pl_PL.UTF-8
+    volumes:
+      - ./data:/config
+#    ports:
+#      - 8080:8080
+#      - 8181:8181
+    devices:
+      - /dev/dri:/dev/dri #optional
+    restart: unless-stopped
+    networks:
+      - npm
+
+networks:
+  npm:
+    name: npm_network
