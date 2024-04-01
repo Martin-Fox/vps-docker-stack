@@ -4,10 +4,6 @@
 
 # Excluded directories #
 #######################
-./activepieces/backup/
-./boinc/data/
-./npm/data/
-./tailscale/tailscale/
 ./discourse/
 
 # Environment files #

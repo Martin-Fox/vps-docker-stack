@@ -2,7 +2,7 @@ version: '3.8'
 services:
   tailscale:
     container_name: tailscale
-    hostname: tailscale-nas
+    hostname: tailscale-vps
     image: tailscale/tailscale:stable
     volumes:
       - ./tailscale:/var/lib # State data will be stored in this directory 

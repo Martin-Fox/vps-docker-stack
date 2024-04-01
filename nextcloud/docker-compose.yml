@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   nextcloud-aio-mastercontainer:
-    image: nextcloud/all-in-one:latest
+    image: nextcloud/all-in-one:20240117_083657-latest
     init: true
     restart: always
     container_name: nextcloud-aio-mastercontainer # This line is not allowed to be changed as otherwise AIO will not work correctly
@@ -31,11 +31,9 @@ services:
     networks:
       - nextcloud-aio # Is needed when you want to create the nextcloud-aio network with ipv6-support using this file, see the network config at the bottom of the file
 
-
 volumes:
   nextcloud_aio_mastercontainer:
     name: nextcloud_aio_mastercontainer # This line is not allowed to be changed as otherwise the built-in backup solution will not work
-
 
 networks:
   nextcloud-aio:
