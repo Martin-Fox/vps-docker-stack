@@ -1,6 +1,6 @@
 services:
   boinc:
-    image: lscr.io/linuxserver/boinc:latest
+    image: linuxserver/boinc:7.24.1
     container_name: boinc
     security_opt:
       - seccomp:unconfined #optional

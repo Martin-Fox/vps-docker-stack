@@ -3,7 +3,7 @@ services:
   tailscale:
     container_name: tailscale
     hostname: tailscale-vps
-    image: tailscale/tailscale:stable
+    image: tailscale/tailscale:v1.64.1
     volumes:
       - ./tailscale:/var/lib # State data will be stored in this directory 
       - /dev/net/tun:/dev/net/tun # Required for tailscale to work 
