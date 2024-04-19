@@ -1,6 +1,7 @@
 # Excluded files #
 ##################
 ./docker-compose.yml
+./backup.sh
 
 # Excluded directories #
 #######################
