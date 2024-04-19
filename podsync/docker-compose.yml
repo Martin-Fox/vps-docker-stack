@@ -2,8 +2,9 @@ services:
   podsync:
     image: mxpv/podsync:v2.5
     container_name: podsync
-#    ports:
-#      - 80:80
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     volumes:
       - ./data:/data/
       - ./data:/app/data/
