@@ -2,8 +2,8 @@ services:
   podsync:
     image: mxpv/podsync:v2.5
     container_name: podsync
-    ports:
-      - 80:80
+#    ports:
+#      - 80:80
     volumes:
       - ./data:/data/
       - ./data:/app/data/
