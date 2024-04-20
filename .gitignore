@@ -6,6 +6,7 @@
 # Excluded directories #
 #######################
 ./discourse/
+./podsync/data/
 
 # Environment files #
 #####################
