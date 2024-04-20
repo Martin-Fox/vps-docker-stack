@@ -16,6 +16,7 @@ services:
       - npm
       - nextcloud-aio
       - torrent
+      - podsync
 
 networks:
   npm:
@@ -25,3 +26,5 @@ networks:
     driver: bridge
   torrent:
     name: torrent_network
+  podsync:
+    name: podsync_network
