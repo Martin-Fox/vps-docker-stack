@@ -2,6 +2,7 @@
 ##################
 docker-compose.yml
 backup.sh
+podsync/config.toml
 
 # Excluded directories #
 #######################
