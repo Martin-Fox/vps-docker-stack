@@ -1,0 +1,20 @@
+services:
+  podsync:
+#    image: ghcr.io/fqx/podsync-with-yt-dlp:latest
+    image: mxpv/podsync:v2.5
+    container_name: podsync
+#    environment:
+#      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+#      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+#    ports:
+#      - 8080:8080
+    volumes:
+      - ./data:/app/data/
+      - ./config.toml:/app/config.toml
+    restart: unless-stopped
+    networks:
+      - podsync
+
+networks:
+  podsync:
+    name: podsync_network
