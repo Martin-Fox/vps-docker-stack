@@ -1,12 +1,19 @@
 # Excluded files #
 ##################
-./docker-compose.yml
-./backup.sh
+docker-compose.yml
+backup.sh
 
 # Excluded directories #
 #######################
-./discourse/
-./podsync/data/
+discourse/
+podsync/data/
+activepieces/backup/
+boinc/data/
+nextcloud/backup/
+tailscale/tailscale/
+npm/data/
+npm/certs/
+npm/letsencrypt/
 
 # Environment files #
 #####################
