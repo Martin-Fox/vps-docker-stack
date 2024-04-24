@@ -1,6 +1,6 @@
 # Excluded files #
 ##################
-docker-compose.yml
+./docker-compose.yml
 backup.sh
 podsync/config.toml
 
