@@ -9,7 +9,7 @@ services:
 #      - TWITCH_SECRET
 #      - TWITCH_CLIENT_ID
     networks:
-      - vod2pod
+      - vod2pod_int
 
   vod2pod:
     extends: api_keys
@@ -28,8 +28,8 @@ services:
       - REDIS_PORT=6379 #don't edit this
     networks:
       - vod2pod
-      - npm
-#      - nextcloud-aio
+      - vod2pod_int
+
 
   redis:
     image: "redis:6.2"
@@ -42,14 +42,10 @@ services:
       timeout: 3s
       retries: 5
     networks:
-      - vod2pod
+      - vod2pod_int
 
-#networks:
-#  nextcloud-aio:
-#    name: nextcloud-aio
-#    driver: bridge
 networks:
-  npm:
-    name: npm_network
   vod2pod:
     name: vod2pod_network
+  vod2pod_int:
+    name: vod2pod_int    

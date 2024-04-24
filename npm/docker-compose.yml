@@ -17,6 +17,7 @@ services:
       - nextcloud-aio
       - torrent
       - podsync
+      - vod2pod
 
 networks:
   npm:
@@ -28,3 +29,5 @@ networks:
     name: torrent_network
   podsync:
     name: podsync_network
+  vod2pod:
+    name: vod2pod_network
