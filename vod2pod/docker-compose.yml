@@ -28,7 +28,8 @@ services:
       - REDIS_PORT=6379 #don't edit this
     networks:
       - vod2pod
-      - npm
+#      - npm
+      - nextcloud-aio
 
   redis:
     image: "redis:6.2"
@@ -44,7 +45,11 @@ services:
       - vod2pod
 
 networks:
-  npm:
-    name: npm_network
+  nextcloud-aio:
+    name: nextcloud-aio
+    driver: bridge
+#networks:
+#  npm:
+#    name: npm_network
   vod2pod:
     name: vod2pod_network
