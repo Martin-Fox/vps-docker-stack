@@ -44,11 +44,7 @@ services:
     networks:
       - vod2pod_int
     volumes:
-      - vod2pod_db:/data
-
-volumes:
-  vod2pod_db:
-    name: vod2pod_db
+      - ./vod2pod_db:/data
   
 networks:
   vod2pod:

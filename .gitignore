@@ -15,6 +15,7 @@ tailscale/tailscale/
 npm/data/
 npm/certs/
 npm/letsencrypt/
+vod2pod/vod2pod_db/
 
 # Environment files #
 #####################
