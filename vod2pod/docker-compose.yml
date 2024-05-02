@@ -43,7 +43,13 @@ services:
       retries: 5
     networks:
       - vod2pod_int
+    volumes:
+      - vod2pod_db:/data
 
+volumes:
+  vod2pod_db:
+    name: vod2pod_db
+  
 networks:
   vod2pod:
     name: vod2pod_network
