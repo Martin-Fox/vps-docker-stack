@@ -16,6 +16,10 @@ npm/data/
 npm/certs/
 npm/letsencrypt/
 vod2pod/vod2pod_db/
+wordpress/mysql-fa/
+wordpress/mysql-ml/
+wordpress/wp-fa/
+wordpress/wp-ml/
 
 # Environment files #
 #####################

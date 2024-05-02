@@ -12,7 +12,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - mysql-ml:/var/lib/mysql
+      - ./mysql-ml:/var/lib/mysql
     networks:
       - wp
 
@@ -27,7 +27,7 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
-      - mysql-fa:/var/lib/mysql
+      - ./mysql-fa:/var/lib/mysql
     networks:
       - wp
 
@@ -42,7 +42,7 @@ services:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
     volumes:
-      - wp-ml:/var/www/html
+      - ./wp-ml:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - npm
@@ -61,7 +61,7 @@ services:
       WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
       WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
     volumes:
-      - wp-fa:/var/www/html
+      - ./wp-fa:/var/www/html
       - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
     networks:
       - npm
@@ -69,15 +69,15 @@ services:
     depends_on:
       - mysql-fa
 
-volumes:
-  mysql-ml:
-    name: mysql-ml
-  mysql-fa:
-    name: mysql-fa
-  wp-ml:
-    name: wp-ml
-  wp-fa:
-    name: wp-fa
+#volumes:
+#  mysql-ml:
+#    name: mysql-ml
+#  mysql-fa:
+#    name: mysql-fa
+#  wp-ml:
+#    name: wp-ml
+#  wp-fa:
+#    name: wp-fa
 
 networks:
   npm:
