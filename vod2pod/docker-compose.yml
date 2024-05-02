@@ -50,4 +50,4 @@ networks:
   vod2pod:
     name: vod2pod_network
   vod2pod_int:
-    name: vod2pod_int    
+    name: vod2pod_int
