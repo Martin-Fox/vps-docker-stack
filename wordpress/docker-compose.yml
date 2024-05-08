@@ -32,7 +32,7 @@ services:
       - wp
 
   wordpress-ml:
-    image: wordpress:latest
+    image: wordpress:6.5.2
     hostname: wordpress-ml
     container_name: wordpress-ml
     restart: unless-stopped
@@ -51,7 +51,7 @@ services:
       - mysql-ml
 
   wordpress-fa:
-    image: wordpress:latest
+    image: wordpress:6.5.2
     hostname: wordpress-fa
     container_name: wordpress-fa
     restart: unless-stopped

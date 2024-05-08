@@ -7,6 +7,6 @@ rsync -a /var/docker/wordpress /tmp/backup/config/
 rsync -a /var/lib/docker/volumes/ /tmp/backup/volume/
 tar -czvf /vps_backup/backup_`date +%F`.tar.gz /tmp/backup/
 sudo -u fox gpg --passphrase-file /home/fox/.gnupg/vps-passphrase --batch --pinentry-mode loopback -se -r VPS_backup /vps_backup/backup_`date +%F`.tar.gz
-backblaze-b2 sync /vps_backup/backup_*.tar.gz.gpg b2://fox-vps-backup
+rm /vps_backup/backup_*.tar.gz
+sudo -u fox backblaze-b2 sync /vps_backup/ b2://fox-vps-backup
 find /vps_backup/ -mtime +33 -exec rm {} \;
-
