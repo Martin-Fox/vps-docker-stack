@@ -1,0 +1,40 @@
+services:
+  mysql-itnews:
+    image: mysql:8.0
+    hostname: mysql-itnews
+    container_name: mysql-itnews
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - ./mysql-itnews:/var/lib/mysql
+    networks:
+      - itnews
+
+  wordpress-itnews:
+    image: wordpress:6.5.2
+    hostname: wordpress-itnews
+    container_name: wordpress-itnews
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: mysql-itnews
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
+    volumes:
+      - ./wp-itnews:/var/www/html
+      - ./uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    networks:
+      - npm
+      - itnews
+    depends_on:
+      - mysql-itnews
+
+networks:
+  npm:
+    name: npm_network
+  itnews:
+    name: itnews_network
