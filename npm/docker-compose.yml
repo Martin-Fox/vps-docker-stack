@@ -15,9 +15,8 @@ services:
     networks:
       - npm
       - nextcloud-aio
-      - torrent
-      - podsync
-      - vod2pod
+#      - podsync
+#      - vod2pod
 
 networks:
   npm:
@@ -25,9 +24,7 @@ networks:
   nextcloud-aio:
     name: nextcloud-aio # This line is not allowed to be changed as otherwise the created network will not be used by the other containers of AIO
     driver: bridge
-  torrent:
-    name: torrent_network
-  podsync:
-    name: podsync_network
-  vod2pod:
-    name: vod2pod_network
+#  podsync:
+#    name: podsync_network
+#  vod2pod:
+#    name: vod2pod_network

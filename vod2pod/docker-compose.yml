@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   api_keys:
     image: alpine
@@ -9,7 +7,7 @@ services:
 #      - TWITCH_SECRET
 #      - TWITCH_CLIENT_ID
     networks:
-      - vod2pod_int
+      - vod2pod
 
   vod2pod:
     extends: api_keys
@@ -28,7 +26,7 @@ services:
       - REDIS_PORT=6379 #don't edit this
     networks:
       - vod2pod
-      - vod2pod_int
+      - npm
 
 
   redis:
@@ -42,12 +40,12 @@ services:
       timeout: 3s
       retries: 5
     networks:
-      - vod2pod_int
+      - vod2pod
     volumes:
       - ./vod2pod_db:/data
   
 networks:
   vod2pod:
     name: vod2pod_network
-  vod2pod_int:
-    name: vod2pod_int
+  npm:
+    name: npm_network
