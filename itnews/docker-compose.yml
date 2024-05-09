@@ -15,7 +15,7 @@ services:
       - itnews
 
   wordpress-itnews:
-    image: wordpress:6.5.2
+    image: wordpress:6.5.3
     hostname: wordpress-itnews
     container_name: wordpress-itnews
     restart: unless-stopped
