@@ -20,7 +20,8 @@ wordpress/mysql-fa/
 wordpress/mysql-ml/
 wordpress/wp-fa/
 wordpress/wp-ml/
-itnews/
+itnews/mysql-itnews/
+itnews/wp-itnews/
 
 # Environment files #
 #####################
