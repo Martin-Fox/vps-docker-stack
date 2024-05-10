@@ -1,4 +1,4 @@
-rsync -a /home/fox/ /tmp/backup/home/
+#rsync -a /home/fox/ /tmp/backup/home/
 rsync -a /var/docker/activepieces /tmp/backup/config/
 rsync -a /var/docker/nextcloud /tmp/backup/config/
 rsync -a /var/docker/npm /tmp/backup/config/
