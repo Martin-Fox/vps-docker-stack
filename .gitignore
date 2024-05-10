@@ -3,6 +3,7 @@
 ./docker-compose.yml
 backup.sh
 podsync/config.toml
+itnews/cron.log
 
 # Excluded directories #
 #######################
