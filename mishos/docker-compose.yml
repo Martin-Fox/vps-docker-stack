@@ -13,13 +13,13 @@ services:
     image: bljohnsondev/mishos-api:v0.2.1
     container_name: mishos-be
     environment:
-      - GIN_MODE
+      - GIN_MODE=release
       - TZ
       - PORT
       - SECRET
       - CORS
       - WATCHLIST_RECENT_LIMIT
-      - RUN_MIGRATION
+      - RUN_MIGRATION=1
       - DB_TYPE
       - DB_URL
       - API_URL
