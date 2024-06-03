@@ -1,0 +1,37 @@
+services:
+  mishos-fe:
+    image: bljohnsondev/mishos-web:v0.2.0
+    container_name: mishos-fe
+    environment:
+      - DOCKER_BE_URL=http://mishos-be:3000/api
+    restart: unless-stopped
+    networks:
+      - mishos
+      - npm
+
+  mishos-be:
+    image: bljohnsondev/mishos-api:v0.2.1
+    container_name: mishos-be
+    environment:
+      - GIN_MODE
+      - TZ
+      - PORT
+      - SECRET
+      - CORS
+      - WATCHLIST_RECENT_LIMIT
+      - RUN_MIGRATION
+      - DB_TYPE
+      - DB_URL
+      - API_URL
+      - CRON_PROVIDER_UPDATE
+    restart: unless-stopped
+    volumes:
+      - ./db:/db
+    networks:
+      - mishos
+
+networks:
+  npm:
+    name: npm_network
+  mishos:
+    name: mishos_network
