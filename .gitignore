@@ -4,7 +4,7 @@
 backup.sh
 podsync/config.toml
 itnews/cron.log
-.gitignore
+mishos/db/mishos.db
 
 # Excluded directories #
 #######################
